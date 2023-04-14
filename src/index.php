@@ -11,23 +11,23 @@ $scaler = new MinMaxScaler();
 $scaler->scale_csv($data, __DIR__ . '/scaled_data.csv');
 // preproses end
 
-// // classify
-// $filename = __DIR__ . '/scaled_data.csv';
+// classify
+$filename = __DIR__ . '/scaled_data.csv';
 
-// $c45 = new C45([
-//                 'targetAttribute' => 'Gaya Belajar',
-//                 'trainingFile' => $filename,
-//                 'splitCriterion' => C45::SPLIT_GAIN,
-//             ]);
+$c45 = new C45([
+                'targetAttribute' => 'Gaya Belajar',
+                'trainingFile' => $filename,
+                'splitCriterion' => C45::SPLIT_GAIN,
+            ]);
 
-// $tree = $c45->buildTree();
-// $treeString = $tree->toString();
-// // classify end
+$tree = $c45->buildTree();
+$treeString = $tree->toString();
+// classify end
 
-// // print generated tree
-// echo '<pre>';
-// print_r($treeString);
-// echo '</pre>';
+// print generated tree
+echo '<pre>';
+print_r($treeString);
+echo '</pre>';
 
 // $testingData = [
 //   // 'outlook' => 'rain',
