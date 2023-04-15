@@ -4,6 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use C45\C45;
 use C45\Preprocess\MinMaxScaler;
+use C45\ConfusionMatrix\ConfusionMatrix;
 
 // preproses
 $data = __DIR__ . '/data.csv';
@@ -36,3 +37,22 @@ echo '</pre>';
 // ];
 
 // echo $tree->classify($testingData); // prints 'no'
+
+// evaluasi menggunakan confusion matriks
+
+$labels = ['cat', 'dog', 'fish'];
+$matrix = new ConfusionMatrix($labels);
+
+$matrix->addPrediction('cat', 'cat');
+$matrix->addPrediction('cat', 'dog');
+$matrix->addPrediction('dog', 'cat');
+$matrix->addPrediction('dog', 'dog');
+$matrix->addPrediction('fish', 'fish');
+$matrix->addPrediction('fish', 'fish');
+$matrix->addPrediction('fish', 'fish');
+
+$print_evaluasi = $matrix->printMatrix();
+
+echo '<pre>';
+print_r($print_evaluasi);
+echo '</pre>';
