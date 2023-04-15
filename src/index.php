@@ -5,12 +5,41 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use C45\C45;
 use C45\Preprocess\MinMaxScaler;
 use C45\ConfusionMatrix\ConfusionMatrix;
+use C45\DownloadButton\DownloadButton;
+
+$button = new DownloadButton();
+
+$data = __DIR__ . '/data.csv';
+// raw download hanlder
+if (isset($_POST['download']) && $_POST['download'] == 'downloadData') {
+    $button->generate($data);
+}
+// raw download handler end
+
+echo "download raw data:";
+echo '<form method="post">';
+echo '   <input type="hidden" name="download" value="downloadData">';
+echo '    <button type="submit">Download File</button>';
+echo '</form> <hr>';
+
 
 // preproses
-$data = __DIR__ . '/data.csv';
 $scaler = new MinMaxScaler();
 $scaler->scale_csv($data, __DIR__ . '/scaled_data.csv');
-// preproses end
+$scaledData = __DIR__ . '/scaled_data.csv';
+
+
+// raw download hanlder
+if (isset($_POST['download']) && $_POST['download'] == 'downloadScaledData') {
+    $button->generate($scaledData);
+}
+// raw download handler end
+
+echo "download scaled data:";
+echo '<form method="post">';
+echo '   <input type="hidden" name="download" value="downloadScaledData">';
+echo '    <button type="submit">Download File</button>';
+echo '</form> <hr>';
 
 // classify
 $filename = __DIR__ . '/scaled_data.csv';
@@ -26,9 +55,10 @@ $treeString = $tree->toString();
 // classify end
 
 // print generated tree
+echo "decision tree rule:";
 echo '<pre>';
 print_r($treeString);
-echo '</pre>';
+echo '</pre> <hr>';
 
 // $testingData = [
 //   // 'outlook' => 'rain',
@@ -51,8 +81,8 @@ $matrix->addPrediction('fish', 'fish');
 $matrix->addPrediction('fish', 'fish');
 $matrix->addPrediction('fish', 'fish');
 
-$print_evaluasi = $matrix->printMatrix();
 
+echo "evaluation confusion matrix:";
 echo '<pre>';
-print_r($print_evaluasi);
-echo '</pre>';
+$matrix->printMatrix();
+echo '</pre> <hr>';
