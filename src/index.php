@@ -10,36 +10,39 @@ use C45\DownloadButton\DownloadButton;
 $button = new DownloadButton();
 
 $data = __DIR__ . '/data.csv';
-// raw download hanlder
-if (isset($_POST['download']) && $_POST['download'] == 'downloadData') {
-    $button->generate($data);
-}
-// raw download handler end
-
-echo "download raw data:";
-echo '<form method="post">';
-echo '   <input type="hidden" name="download" value="downloadData">';
-echo '    <button type="submit">Download File</button>';
-echo '</form> <hr>';
-
-
 // preproses
 $scaler = new MinMaxScaler();
 $scaler->scale_csv($data, __DIR__ . '/scaled_data.csv');
 $scaledData = __DIR__ . '/scaled_data.csv';
-
+// preprosess end
 
 // raw download hanlder
-if (isset($_POST['download']) && $_POST['download'] == 'downloadScaledData') {
-    $button->generate($scaledData);
+if (isset($_POST['downloadData']) && $_POST['downloadData'] == 'downloadData') {
+    $button->generate($data);
 }
 // raw download handler end
 
-echo "download scaled data:";
+// scaled download hanlder
+if (isset($_POST['downloadScaledData']) && $_POST['downloadScaledData'] == 'downloadScaledData') {
+    $button->generate($scaledData);
+}
+// scaled download handler end
+
+// raw download button
+echo "download raw data:";
 echo '<form method="post">';
-echo '   <input type="hidden" name="download" value="downloadScaledData">';
+echo '   <input type="hidden" name="downloadData" value="downloadData">';
 echo '    <button type="submit">Download File</button>';
 echo '</form> <hr>';
+// raw download button end
+
+// scaled download button
+echo "download scaled data:";
+echo '<form method="post">';
+echo '   <input type="hidden" name="downloadScaledData" value="downloadScaledData">';
+echo '    <button type="submit">Download File</button>';
+echo '</form> <hr>';
+// scaled download button
 
 // classify
 $filename = __DIR__ . '/scaled_data.csv';
