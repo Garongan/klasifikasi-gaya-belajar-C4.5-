@@ -3,46 +3,6 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use C45\C45;
-use C45\Preprocess\MinMaxScaler;
-use C45\ConfusionMatrix\ConfusionMatrix;
-use C45\DownloadButton\DownloadButton;
-
-// $button = new DownloadButton();
-
-// $data = __DIR__ . '/data.csv';
-// preproses
-// $scaler = new MinMaxScaler();
-// $scaler->scale_csv($data, __DIR__ . '/scaled_data.csv');
-// $scaledData = __DIR__ . '/scaled_data.csv';
-// preprosess end
-
-// raw download hanlder
-// if (isset($_POST['downloadData']) && $_POST['downloadData'] == 'downloadData') {
-//     $button->generate($data);
-// }
-// raw download handler end
-
-// scaled download hanlder
-// if (isset($_POST['downloadScaledData']) && $_POST['downloadScaledData'] == 'downloadScaledData') {
-//     $button->generate($scaledData);
-// }
-// scaled download handler end
-
-// raw download button
-// echo "download raw data:";
-// echo '<form method="post">';
-// echo '   <input type="hidden" name="downloadData" value="downloadData">';
-// echo '    <button type="submit">Download File</button>';
-// echo '</form> <hr>';
-// raw download button end
-
-// scaled download button
-// echo "download scaled data:";
-// echo '<form method="post">';
-// echo '   <input type="hidden" name="downloadScaledData" value="downloadScaledData">';
-// echo '    <button type="submit">Download File</button>';
-// echo '</form> <hr>';
-// scaled download button
 
 // classify
 $filename = __DIR__ . '/data.csv';
@@ -63,57 +23,79 @@ $treeString = $tree->toString();
 // print_r($treeString);
 // echo '</pre> <hr>';
 
+// input variabel gaya belajar
+
+$VIS1 = random_int(1, 4);
+$VIS2 = random_int(1, 4);
+$VIS3 = random_int(1, 4);
+$VIS4 = random_int(1, 4);
+$VIS5 = random_int(1, 4);
+$VIS6 = random_int(1, 4);
+$VIS7 = random_int(1, 4);
+$VIS8 = random_int(1, 4);
+$VIS9 = random_int(1, 4);
+$VIS10 = random_int(1, 4);
+$AUD1 = random_int(1, 4);
+$AUD2 = random_int(1, 4);
+$AUD3 = random_int(1, 4);
+$AUD4 = random_int(1, 4);
+$AUD5 = random_int(1, 4);
+$AUD6 = random_int(1, 4);
+$AUD7 = random_int(1, 4);
+$AUD8 = random_int(1, 4);
+$AUD9 = random_int(1, 4);
+$AUD10 = random_int(1, 4);
+$KIN1 = random_int(1, 4);
+$KIN2 = random_int(1, 4);
+$KIN3 = random_int(1, 4);
+$KIN4 = random_int(1, 4);
+$KIN5 = random_int(1, 4);
+$KIN6 = random_int(1, 4);
+$KIN7 = random_int(1, 4);
+$KIN8 = random_int(1, 4);
+$KIN9 = random_int(1, 4);
+$KIN10 = random_int(1, 4);
+
+// testing data
+
 $testingData = [
-  'VIS1' => '2',
-  'VIS2' => '1',
-  'VIS3' => '3',
-  'VIS4' => '4',
-  'VIS5' => '1',
-  'VIS6' => '3',
-  'VIS7' => '2',
-  'VIS8' => '4',
-  'VIS9' => '1',
-  'VIS10' => '2',
-  'AUD1' => '3',
-  'AUD2' => '2',
-  'AUD3' => '1',
-  'AUD4' => '2',
-  'AUD5' => '2',
-  'AUD6' => '3',
-  'AUD7' => '2',
-  'AUD8' => '1',
-  'AUD9' => '3',
-  'AUD10' => '3',
-  'KIN1' => '1',
-  'KIN2' => '2',
-  'KIN3' => '3',
-  'KIN4' => '4',
-  'KIN5' => '1',
-  'KIN6' => '2',
-  'KIN7' => '4',
-  'KIN8' => '3',
-  'KIN9' => '4',
-  'KIN10' => '1',
+  'VIS1' => $VIS1,
+  'VIS2' => $VIS2,
+  'VIS3' => $VIS3,
+  'VIS4' => $VIS4,
+  'VIS5' => $VIS5,
+  'VIS6' => $VIS6,
+  'VIS7' => $VIS7,
+  'VIS8' => $VIS8,
+  'VIS9' => $VIS9,
+  'VIS10' => $VIS10,
+  'AUD1' => $AUD1,
+  'AUD2' => $AUD2,
+  'AUD3' => $AUD3,
+  'AUD4' => $AUD4,
+  'AUD5' => $AUD5,
+  'AUD6' => $AUD6,
+  'AUD7' => $AUD7,
+  'AUD8' => $AUD8,
+  'AUD9' => $AUD9,
+  'AUD10' => $AUD10,
+  'KIN1' => $KIN1,
+  'KIN2' => $KIN2,
+  'KIN3' => $KIN3,
+  'KIN4' => $KIN4,
+  'KIN5' => $KIN5,
+  'KIN6' => $KIN6,
+  'KIN7' => $KIN7,
+  'KIN8' => $KIN8,
+  'KIN9' => $KIN9,
+  'KIN10' => $KIN10,
 ];
 
+echo "Array Indikator Gaya Belajar: ";
+echo "<br>";
+print_r($testingData);
+echo "<br>";
 echo "Gaya belajar anda adalah: ";
-echo $tree->classify($testingData);
+echo "<b>" . $tree->classify($testingData) . "</b>";
 
-// evaluasi menggunakan confusion matriks
-
-// $labels = ['cat', 'dog', 'fish'];
-// $matrix = new ConfusionMatrix($labels);
-
-// $matrix->addPrediction('cat', 'cat');
-// $matrix->addPrediction('cat', 'dog');
-// $matrix->addPrediction('dog', 'cat');
-// $matrix->addPrediction('dog', 'dog');
-// $matrix->addPrediction('fish', 'fish');
-// $matrix->addPrediction('fish', 'fish');
-// $matrix->addPrediction('fish', 'fish');
-
-
-// echo "evaluation confusion matrix:";
-// echo '<pre>';
-// $matrix->printMatrix();
-// echo '</pre> <hr>';
+// evaluasi akurasi
