@@ -24,6 +24,7 @@ $treeString = $tree->toString();
 // echo '</pre> <hr>';
 
 // input variabel gaya belajar
+// input variabel gaya belajar dengan fitur random dari range 1 sampai 4
 
 $VIS1 = random_int(1, 4);
 $VIS2 = random_int(1, 4);
@@ -57,6 +58,7 @@ $KIN9 = random_int(1, 4);
 $KIN10 = random_int(1, 4);
 
 // testing data
+// memasukkan variabel gaya belajar ke testing data agar dapat melakukan klasifikasi
 
 $testingData = [
   'VIS1' => $VIS1,
@@ -90,6 +92,9 @@ $testingData = [
   'KIN9' => $KIN9,
   'KIN10' => $KIN10,
 ];
+
+// menampilkan array dari indikator gaya belajar hasil random
+// dan menampilkan prediksi gaya belajar dari algoritma c4.5
 
 echo "Array Indikator Gaya Belajar: ";
 echo "<br>";
