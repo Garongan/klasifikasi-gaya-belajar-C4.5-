@@ -135,16 +135,16 @@ class C45
     {
         $treeNode = new TreeNode();
         // PRUNING-PRUNINGAN
-        $classProb = $this->calculateClassProbability($criteria);
-        $biggestClass = $this->getBiggestArrayAttribute($classProb);
+        // $classProb = $this->calculateClassProbability($criteria);
+        // $biggestClass = $this->getBiggestArrayAttribute($classProb);
         
-        if ($classProb[$biggestClass] > 0.85) {
-            $treeNode->setAttribute($this->targetAttribute);
-            $treeNode->addChild('result', $biggestClass);
-            $treeNode->setIsLeaf(true);
+        // if ($classProb[$biggestClass] > 0.85) {
+        //     $treeNode->setAttribute($this->targetAttribute);
+        //     $treeNode->addChild('result', $biggestClass);
+        //     $treeNode->setIsLeaf(true);
         
-            return $treeNode;
-        }
+        //     return $treeNode;
+        // }
         // END of PRUNING-PRUNINGAN
 
         $checkClass = $this->isBelongToOneClass($criteria);
