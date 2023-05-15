@@ -19,10 +19,10 @@ $treeString = $tree->toString();
 // classify end
 
 // print generated tree
-// echo "decision tree rule:";
-// echo '<pre>';
-// print_r($treeString);
-// echo '</pre> <hr>';
+echo "decision tree rule:";
+echo '<pre>';
+print_r($treeString);
+echo '</pre> <hr>';
 
 // echo "masukkan 30 indikator gaya belajar dengan range dari 1 sampai 4, seperti contoh dibawah ini <br>";
 // echo "<pre>";
@@ -226,7 +226,7 @@ if (!empty($_FILES['testingData'])) {
       <table>
           <thead>
               <tr>
-                  <th>Kelas Predikasi</th>
+                  <th>Kelas Prediksi</th>
                   <th>Kelas Aktual</th>
               </tr>
           </thead>
