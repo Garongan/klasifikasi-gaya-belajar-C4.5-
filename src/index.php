@@ -5,7 +5,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use C45\C45;
 use C45\FileUploader\FileUploader;
 
-// classify
 $filename = __DIR__ . '/data.csv';
 
 $c45 = new C45([
@@ -16,7 +15,6 @@ $c45 = new C45([
 
 // $tree = $c45->buildTree();
 // $treeString = $tree->toString();
-// classify end
 
 // print generated tree
 // echo "decision tree rule:";
@@ -101,7 +99,7 @@ $c45 = new C45([
 <!DOCTYPE html>
   <html>
   <head>
-      <title>Prediksi Algoritma C4.5</title>
+      <title>Prediksi Gaya Belajar dengan Algoritma C4.5</title>
       <style>
           table {
               border-collapse: collapse;

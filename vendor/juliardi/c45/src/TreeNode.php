@@ -195,14 +195,15 @@ class TreeNode
         $result = '';
 
         foreach ($this->values as $key => $child) {
-            $result .= $tabs.$this->attribute.' = '.$key;
+            $result .= $tabs. "'" .$this->attribute.'='.$key;
 
             if ($child->getIsLeaf()) {
-                $classCount = $this->getInstanceCountAsString($key);
-                $result .= ' : '.$child->getChild('result').' '.$classCount."\n";
+                // $classCount = $this->getInstanceCountAsString($key);
+                // without class count
+                $result .= ':'.$child->getChild('result')."'\n";
             } else {
-                $result .= "\n";
-                $result .= $child->toString($tabs."|\t");
+                $result .= "'\n";
+                $result .= $child->toString($tabs." ");
             }
         }
 
