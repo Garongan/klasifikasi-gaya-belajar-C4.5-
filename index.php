@@ -1,3 +1,3 @@
 <?php
 
-include './src/index.php';
+include './src/klasifikasi.php';
