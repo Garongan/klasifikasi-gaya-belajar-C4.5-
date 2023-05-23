@@ -182,12 +182,19 @@ if (!empty($_POST['split'])) {
   // delete file
   echo "<br><hr>";
   $upload->deleteFile($inputDataName);
-  echo "<br><hr>";
-  $upload->deleteFile($trainDataName);
-  echo "<br><hr>";
-  $upload->deleteFile($testDataName);
+  // echo "<br><hr>";
+  // $upload->deleteFile($trainDataName);
+  // echo "<br><hr>";
+  // $upload->deleteFile($testDataName);
   // delete file end
 
 }
 // klasifikasi end
+$treeString = $tree->toString();
+
+// print generated tree
+echo "decision tree rule:";
+echo '<pre>';
+print_r($treeString);
+echo '</pre> <hr>';
 ?>
